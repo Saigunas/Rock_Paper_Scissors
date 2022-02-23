@@ -74,7 +74,7 @@ function game() {
   let p1Score = 0;
   let p2Score = 0;
   
-  for (let i = 0; i < 5; i++) {
+  while (p1Score != 5 && p2Score != 5) {
     const playerSelection = playerPlay();
     const computerSelection = computerPlay();
     let result = playRound(playerSelection, computerSelection);
@@ -103,9 +103,6 @@ function result(p1Score, p2Score) {
   }
   if(p1Score < p2Score) {
     return "Player 1 lost!"
-  }
-  if(p1Score == p2Score) {
-    return "A tie! Amazing!"
   }
 }
 
