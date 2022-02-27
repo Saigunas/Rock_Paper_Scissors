@@ -1,7 +1,11 @@
 
 let p1Score = 0;
 let p2Score = 0;
+let numberGamesToWin = 5;
 
+const textWinAnnounce = document.querySelector('.winnerAnnounce');
+const textPcResult = document.querySelector('.pcResult');
+const textPlayerResult = document.querySelector('.playerResult');
 
 const cards = document.querySelectorAll('.pCard');
 
@@ -24,6 +28,8 @@ function computerPlay() {
 
 //Play one round, announce result
 function playRound(playerSelection, computerSelection) {
+
+  textWinAnnounce.style.fontSize = '5vw';
 
   if(playerSelection === computerSelection) {
     announceRoundWinner('It is a tie!');
@@ -58,23 +64,40 @@ function playRound(playerSelection, computerSelection) {
   
 function announceRoundWinner(result, playerSelection, computerSelection) {
   if(result == 'You lose!') {
-    console.log(result + ' ' + computerSelection + ' beats ' + playerSelection);
+
     p2Score++;
+    if(p2Score === numberGamesToWin) {
+      announceGameWinner();
+      return;
+    }
+
+    textWinAnnounce.textContent = (result + ' ' + computerSelection + ' beats ' + playerSelection);
+  
   } else if(result == 'You win!') {
-    console.log(result + ' ' + playerSelection + ' beats ' + computerSelection);
+
     p1Score++;
+    if(p1Score === numberGamesToWin) {
+      announceGameWinner();
+      return;
+    }
+
+    textWinAnnounce.textContent = (result + ' ' + playerSelection + ' beats ' + computerSelection);
+  
   } else {
-    console.log(result);
+    textWinAnnounce.textContent = result;
   }
 }
 
 
 
-function announceGameWinner(p1Score, p2Score) {
+function announceGameWinner() {
+  textWinAnnounce.style.fontSize = '10vw';
   if(p1Score > p2Score) {
-    return "Player 1 won!";
+    textWinAnnounce.textContent = "Player 1 won!";
   }
   if(p1Score < p2Score) {
-    return "Player 1 lost!"
+    textWinAnnounce.textContent = "Player 1 lost!"
   }
+  cards.forEach(pCard => pCard.removeEventListener('click', 
+  playerPlay));
 }

@@ -24,6 +24,15 @@ h1 {
     flex-direction: column;
 }
 
+.playerResult {
+    font-size: 3vw;
+}
+
+.pcResult {
+    font-size: 3vw;
+    text-align: right;
+}
+
 .cards {
     display: flex;
     gap: 1vw;
@@ -61,8 +70,9 @@ h1 {
     font-size: clamp(1rem, 3vw, 100px);
     align-items: center;
     margin-top: 6vh;
-    font-size: 10vh;
+    font-size: 10vw;
     gap: 8vh;
+    text-align: center;
 }
 
 button {
