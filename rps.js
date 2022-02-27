@@ -1,103 +1,76 @@
+
+let p1Score = 0;
+let p2Score = 0;
+
+
+const cards = document.querySelectorAll('.pCard');
+
+cards.forEach(pCard => pCard.addEventListener('click', 
+  playerPlay));
+
+function playerPlay(e) {
+  const playerSelection = e.target.getAttribute("data-sign");
+  playRound(playerSelection, computerPlay());
+} 
+
+
 //Computer randomly returns rock, paper or scissors
 function computerPlay() {
   let possibleMoves = Array("Rock", "Paper", "Scissors");
   let item = possibleMoves[Math.floor(Math.random()*possibleMoves.length)];
-  console.log("Computer throws " + item);
   return item;
 }
 
-//Player selects one of possible moves
-function playerPlay() {
-  let input = "";
-  let validMove = false;
 
-  //Ask for input until move is valid
-  while(validMove == false) {
-    
-    let possibleMoves = Array("Rock", "Paper", "Scissors");
-    input = prompt("Please enter your move:");
-    
-    input = input.toLowerCase();
-    input = capitalizeFirstLetter(input);
-  
-    //Check if move is valid
-    for (const move of possibleMoves) {
-      if(move == input) {
-        validMove = true;
-      }
-    }
-  
-    //If move is invalid repeat
-    if(validMove == false) {
-      alert("Invalid move");
-    }
+//Play one round, announce result
+function playRound(playerSelection, computerSelection) {
+
+  if(playerSelection === computerSelection) {
+    announceRoundWinner('It is a tie!');
+    return;
   }
-  
-  console.log("Player throws " + input);
-  return input;
-}
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-//Play one round, return result
-function playRound(player1, player2) {
-  if(player1 === player2) {
-  return 'It is a tie!';
-  }
-  switch (player1) {
+  switch (playerSelection) {
   case 'Rock':
-    if(player2 == 'Paper') {
-      return 'You lose!';
+    if(computerSelection == 'Paper') {
+      announceRoundWinner('You lose!', playerSelection, computerSelection);
     } else {
-      return 'You win!';
+      announceRoundWinner('You win!', playerSelection, computerSelection);
     }
+    break;
   case 'Paper':
-    if(player2 == 'Scissors') {
-      return 'You lose!';
+    if(computerSelection == 'Scissors') {
+      announceRoundWinner('You lose!', playerSelection, computerSelection);
     } else {
-      return 'You win!';
+      announceRoundWinner('You win!', playerSelection, computerSelection);
     }
+    break;
   case 'Scissors':
-    if(player2 == 'Rock') {
-      return 'You lose!';
+    if(computerSelection == 'Rock') {
+      announceRoundWinner('You lose!', playerSelection, computerSelection);
     } else {
-      return 'You win!';
+      announceRoundWinner('You win!', playerSelection, computerSelection);
     }
+    break;
   }
 }
 
-//Play a number of games and announce a winner
-function game() {
-
-  let p1Score = 0;
-  let p2Score = 0;
   
-  while (p1Score != 5 && p2Score != 5) {
-    const playerSelection = playerPlay();
-    const computerSelection = computerPlay();
-    let result = playRound(playerSelection, computerSelection);
-
-    if(result == 'You lose!') {
-      console.log(result + ' ' + computerSelection + ' beats ' + playerSelection);
-      p2Score++;
-    } else if(result == 'You win!') {
-      console.log(result + ' ' + playerSelection + ' beats ' + computerSelection);
-      p1Score++;
-    } else {
-      console.log(result);
-    }
-
-      console.log(" ");
-    
+function announceRoundWinner(result, playerSelection, computerSelection) {
+  if(result == 'You lose!') {
+    console.log(result + ' ' + computerSelection + ' beats ' + playerSelection);
+    p2Score++;
+  } else if(result == 'You win!') {
+    console.log(result + ' ' + playerSelection + ' beats ' + computerSelection);
+    p1Score++;
+  } else {
+    console.log(result);
   }
-
-  console.log(result(p1Score, p2Score));
 }
 
-//Return a result of the game
-function result(p1Score, p2Score) {
+
+
+function announceGameWinner(p1Score, p2Score) {
   if(p1Score > p2Score) {
     return "Player 1 won!";
   }
@@ -105,5 +78,3 @@ function result(p1Score, p2Score) {
     return "Player 1 lost!"
   }
 }
-
-game();
