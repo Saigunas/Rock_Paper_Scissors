@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Roboto:wght@300;400;500&display=swap');
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Gloria Hallelujah', 'Roboto';
+}
+
+h1 {
+    margin-top: 15px;
+    margin-bottom: 18vh;
+    padding: 0;
+    font-size: clamp(1rem, 6vw, 100px); 
+    text-align: center;
+}
+
+.gameScreen {
+    display: flex;
+    justify-content: center;
+    gap: 15vw;
+}
+
+.player, .pc {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards {
+    display: flex;
+    gap: 1vw;
+}
+
+.cards > img {
+    width: 8vw;
+    max-width: 100px;
+    height: auto;
+    border-radius: 1.8vw;
+    border:  solid #000000;
+    padding: 1.8vw;
+    background-color: azure;
+}
+
+/* transition settings, player only */
+.player > .cards > img {    
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.player > .cards > img:hover { 
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+}
+/**/
+
+
+.gameEnd {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(1rem, 3vw, 100px);
+    align-items: center;
+    margin-top: 6vh;
+    font-size: 10vh;
+    gap: 8vh;
+}
+
+button {
+    font-size: 4vh;
+    border-radius: 1.8vw;
+    border:  solid #000000;
+    padding: 1.8vw;
+    background-color: azure;
+}
+
+button:hover {
+    background-color: rgb(227, 241, 241);
+}
