@@ -1,84 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Roboto:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Roboto:wght@300;400;500&display=swap");
 body {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Gloria Hallelujah', 'Roboto';
+  display: flex;
+  flex-direction: column;
+  font-family: "Gloria Hallelujah", "Roboto";
 }
 
 h1 {
-    margin-top: 15px;
-    margin-bottom: 18vh;
-    padding: 0;
-    font-size: clamp(1rem, 6vw, 100px); 
-    text-align: center;
+  margin-top: 15px;
+  margin-bottom: 18vh;
+  padding: 0;
+  font-size: 6vw;
+  text-align: center;
 }
 
 .gameScreen {
-    display: flex;
-    justify-content: center;
-    gap: 15vw;
+  display: flex;
+  justify-content: center;
+  gap: 15vw;
 }
 
-.player, .pc {
-    display: flex;
-    flex-direction: column;
+.player,
+.pc {
+  display: flex;
+  flex-direction: column;
 }
 
 .playerResult {
-    font-size: 3vw;
+  font-size: 3vw;
 }
 
 .pcResult {
-    font-size: 3vw;
-    text-align: right;
+  font-size: 3vw;
+  text-align: right;
 }
 
 .cards {
-    display: flex;
-    gap: 1vw;
+  display: flex;
+  gap: 1vw;
 }
 
 .cards > img {
-    width: 8vw;
-    max-width: 100px;
-    height: auto;
-    border-radius: 1.8vw;
-    border:  solid #000000;
-    padding: 1.8vw;
-    background-color: azure;
+  width: 6vw;
+  max-width: 150px;
+  height: auto;
+  border-radius: 1.8vw;
+  border: solid #000000;
+  border-width: 0.4vw;
+  padding: 1.8vw;
+  background-color: azure;
 }
 
 /* transition settings, player only */
-.player > .cards > img {    
-    transition-duration: 0.3s;
-    transition-property: transform;
-    transition-timing-function: ease-out;
+.player > .cards > img {
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
 }
-.player > .cards > img:hover { 
-    transform: translateY(-8px);
+.player > .cards > img:hover {
+  transform: translateY(-8px);
 }
 /**/
 
-
 .gameEnd {
-    display: flex;
-    flex-direction: column;
-    font-size: clamp(1rem, 3vw, 100px);
-    align-items: center;
-    margin-top: 6vh;
-    font-size: 10vw;
-    gap: 8vh;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(1rem, 3vw, 100px);
+  align-items: center;
+  margin-top: 6vh;
+  font-size: 10vw;
+  gap: 5vh;
+  text-align: center;
 }
 
 button {
-    font-size: 4vh;
-    border-radius: 1.8vw;
-    border:  solid #000000;
-    padding: 1.8vw;
-    background-color: azure;
+  font-size: 4vh;
+  border-radius: 1.8vw;
+  border: solid #000000;
+  padding: 1.8vw;
+  background-color: azure;
 }
 
 button:hover {
-    background-color: rgb(227, 241, 241);
+  background-color: rgb(227, 241, 241);
 }
