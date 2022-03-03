@@ -78,8 +78,38 @@ button {
   border: solid #000000;
   padding: 1.8vw;
   background-color: azure;
+  border-width: 0.4vw;
+}
+
+.restartButton {
+  /* Button hidden at the start of the game */
+  visibility: hidden;
+  transition-duration: 0.2s;
+  transition-property: transform;
+  transition-timing-function: ease-in;
 }
 
 button:hover {
   background-color: rgb(227, 241, 241);
+}
+
+@keyframes buttonAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(1vw);
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    transform: translateY(-2vw);
+  }
+}
+
+.buttonClicked {
+  animation-name: buttonAnimation;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
 }

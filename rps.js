@@ -10,6 +10,9 @@ const cards = document.querySelectorAll(".pCard");
 
 const restartButton = document.querySelector(".restartButton");
 restartButton.addEventListener("click", startGame);
+restartButton.addEventListener("click", () => {
+  restartButton.classList.add("buttonClicked");
+});
 
 //start the game when page is opened
 startGame();
@@ -17,7 +20,6 @@ startGame();
 function startGame() {
   p1Score = 0;
   p2Score = 0;
-  restartButton.style.visibility = "hidden";
   textPlayerResult.textContent = `${p1Score} points`;
   textPcResult.textContent = `${p1Score} points`;
   textWinAnnounce.textContent = "First to reach 5 points WINS!";
@@ -108,6 +110,9 @@ function announceGameWinner() {
   }
   cards.forEach((pCard) => pCard.removeEventListener("click", playerPlay));
 
+  //removes animation that was kept active
+  restartButton.classList.remove("buttonClicked");
+  //removes visibility toggled at the very start of the game css file
   restartButton.style.visibility = "visible";
 }
 
