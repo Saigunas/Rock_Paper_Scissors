@@ -60,6 +60,16 @@ h1 {
   transform: translateY(-8px);
 }
 /**/
+/* transition settings, pc only */
+.pc > .cards > img {
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+}
+.pc > .cards > .computerSelectedCard {
+  transform: translateY(-8px);
+}
+/**/
 
 .gameEnd {
   display: flex;
@@ -83,7 +93,7 @@ button {
 
 .restartButton {
   /* Button hidden at the start of the game */
-  visibility: hidden;
+  display: none;
   transition-duration: 0.2s;
   transition-property: transform;
   transition-timing-function: ease-in;

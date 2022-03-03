@@ -1,6 +1,7 @@
 let p1Score = 0;
 let p2Score = 0;
 let numberGamesToWin = 5;
+let computerSelectedCard;
 
 const textWinAnnounce = document.querySelector(".winnerAnnounce");
 const textPcResult = document.querySelector(".pcResult");
@@ -35,8 +36,17 @@ function playerPlay(e) {
 
 //Computer randomly returns rock, paper or scissors
 function computerPlay() {
+  //Remove previously selected card.
+  try {
+    computerSelectedCard.classList.remove("computerSelectedCard");
+  } catch {
+    computerSelectedCard = "";
+  }
+
   let possibleMoves = Array("Rock", "Paper", "Scissors");
   let item = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+  computerSelectedCard = document.querySelector(`.pcCard[data-sign="${item}"]`);
+  computerSelectedCard.classList.add("computerSelectedCard");
   return item;
 }
 
@@ -112,8 +122,8 @@ function announceGameWinner() {
 
   //removes animation that was kept active
   restartButton.classList.remove("buttonClicked");
-  //removes visibility toggled at the very start of the game css file
-  restartButton.style.visibility = "visible";
+  //removes display toggled at the very start of the game css file
+  restartButton.style.display = "inline-block";
 }
 
 function pointOrPoints(nPoint) {
